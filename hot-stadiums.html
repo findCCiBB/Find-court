@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>热门球场</title>
+    <link rel="stylesheet" href="css/hot-stadiums.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部背景 -->
+        <header class="header">
+            <div class="header-top">
+                <button class="back-btn" onclick="AndroidInterface.goBack()">
+                    <img src="images/icons/back.svg" alt="返回">
+                </button>
+                <h1 class="title">热门球场</h1>
+                <div class="placeholder"></div>
+            </div>
+        </header>
+
+        <!-- 滚动内容区域 -->
+        <main class="content">
+            <!-- 修改这里：添加 stadium-list 容器 -->
+            <div class="stadium-list">
+                <!-- 加载状态 -->
+                <div class="loading">加载中...</div>
+            </div>
+        </main>
+    </div>
+    <script src="js/hot-stadiums.js" defer></script>
+</body>
+</html> 
