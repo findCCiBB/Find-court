@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热门资讯</title>
+    <link rel="stylesheet" href="css/hot-news.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部背景 -->
+        <header class="header">
+            <div class="header-banner">
+                <div class="header-top">
+                    <button class="back-btn" onclick="AndroidInterface.goBack()">
+                        <img src="images/icons/back.svg" alt="返回">
+                    </button>
+                    <div class="header-title">
+                        <h1>热门资讯</h1>
+                    </div>
+                    <div class="placeholder"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 滚动内容区域 -->
+        <div class="scroll-container">
+            <div class="content">
+                <!-- 资讯列表 -->
+                <div class="news-container">
+                    <div class="loading-state">加载中...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/hot-news.js"></script>
+</body>
+</html> 

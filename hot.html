@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>热门</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 搜索框 -->
+        <div class="search-box">
+            <img src="images/搜索_search.png" class="icon" alt="">
+            <input type="text" placeholder="搜索热门">
+        </div>
+
+        <!-- 添加导航菜单 -->
+        <nav class="menu">
+            <a href="#" class="active">推荐</a>
+            <a href="#">热榜</a>
+            <a href="#">看球</a>
+            <a href="#">打球</a>
+            <a href="#">约球</a>
+            <a href="#">评球</a>
+        </nav>
+
+        <!-- 新闻列表 -->
+        <div class="news-list">
+            <div class="news-item">
+                <img src="images/德约澳网八强战.jpg" alt="" class="news-image">
+                <div class="news-content">
+                    <h3 class="news-title">德约科维奇创造历史！澳网夺冠成就大满贯第25冠</h3>
+                    <img src="images/喜欢_like.png" class="favorite-btn" alt="">
+                </div>
+            </div>
+            <div class="news-item">
+                <img src="images/news2.jpg" alt="新闻图片" class="news-image">
+                <div class="news-content">
+                    <h3 class="news-title">中国女足世预赛首战告捷，王霜梅开二度助队取胜</h3>
+                    <img src="images/喜欢_like.png" class="favorite-btn" alt="">
+                </div>
+            </div>
+            <div class="news-item">
+                <img src="images/news3.jpg" alt="新闻图片" class="news-image">
+                <div class="news-content">
+                    <h3 class="news-title">NBA全明星周末即将开启，东西部对决值得期待</h3>
+                    <img src="images/喜欢_like.png" class="favorite-btn" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航 -->
+        <footer>
+            <div class="bottom-nav">
+                <a href="javascript:void(0)" onclick="navigateTo('index.html')" class="nav-item">
+                    <img src="images/篮球架_basketball-stand.png" class="nav-icon">
+                    <span class="nav-text">球场</span>
+                </a>
+                <a href="javascript:void(0)" onclick="navigateTo('data.html')" class="nav-item">
+                    <img src="images/比分牌_scoreboard.png" class="nav-icon">
+                    <span class="nav-text">数据</span>
+                </a>
+                <a href="javascript:void(0)" onclick="navigateTo('hot.html')" class="nav-item active">
+                    <img src="images/毛巾_towel.png" class="nav-icon">
+                    <span class="nav-text">热门</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+    function navigateTo(page) {
+        window.location.href = page;
+    }
+    </script>
+</body>
+</html> 

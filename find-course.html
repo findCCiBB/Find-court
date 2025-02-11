@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>找球场</title>
+    <link rel="stylesheet" href="css/find-course.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-top">
+                <button class="back-btn" onclick="AndroidInterface.goBack()">
+                    <img src="images/icons/back.svg" alt="返回">
+                </button>
+                <h1 class="title">找球场</h1>
+                <div class="placeholder"></div>
+            </div>
+            <div class="search-bar">
+                <img src="images/icons/search.svg" alt="搜索" class="search-icon">
+                <input type="text" class="search-input" placeholder="搜索球场...">
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="stadium-list">
+                <div class="loading">加载中...</div>
+            </div>
+        </main>
+    </div>
+    <script src="js/find-course.js"></script>
+</body>
+</html> 

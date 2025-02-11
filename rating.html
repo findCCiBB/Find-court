@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>球场评分</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/rating.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-top">
+                <button class="back-btn" onclick="history.back()">
+                    <img src="images/返回_back.png" alt="返回">
+                </button>
+                <h1>球场评分</h1>
+                <div class="placeholder"></div>
+            </div>
+        </header>
+
+        <div class="rating-container">
+            <div class="stadium-info">
+                <img id="stadium-image" class="stadium-image" src="" alt="球场图片">
+                <h2 id="stadium-name" class="stadium-name"></h2>
+            </div>
+
+            <div class="rating-section">
+                <div class="rating-stars">
+                    <div class="rating-prompt">请为这个球场评分</div>
+                    <div class="stars-container">
+                        <span class="rating-star" data-value="5">★</span>
+                        <span class="rating-star" data-value="4">★</span>
+                        <span class="rating-star" data-value="3">★</span>
+                        <span class="rating-star" data-value="2">★</span>
+                        <span class="rating-star" data-value="1">★</span>
+                    </div>
+                    <div class="rating-description">点击星星评分</div>
+                </div>
+            </div>
+
+            <div class="rating-result hidden">
+                <div class="result-message">
+                    <h3>感谢您的评分！</h3>
+                    <p>您的反馈对我们很重要</p>
+                </div>
+                <div class="stadium-stats">
+                    <!-- 评分统计将在评分后显示 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/rating.js"></script>
+</body>
+</html> 

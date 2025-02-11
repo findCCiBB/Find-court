@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Find Stadium</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container index-page">
+        <!-- 顶部导航 -->
+        <header>
+            <div class="logo">logo</div>
+            <h1 class="header-title">找球场</h1>
+        </header>
+
+        <!-- 搜索框 -->
+        <div class="search-box index-search">
+            <img src="images/搜索_search.png" class="icon" alt="">
+            <input type="text" placeholder="搜索球场">
+        </div>
+
+        <!-- 添加功能按钮区 -->
+        <div class="feature-buttons">
+            <a href="find-course.html" class="feature-item">
+                <img src="images/球场评分.png" alt="">
+                <span>球场评分</span>
+            </a>
+            <a href="javascript:void(0)" onclick="navigateToHotStadiums()" class="feature-item">
+                <img src="images/热门球场.png" alt="">
+                <span>热门球场</span>
+            </a>
+            <a href="javascript:void(0)" onclick="navigateToHotMatches()" class="feature-item">
+                <img src="images/热门赛事.png" alt="">
+                <span>热门赛事</span>
+            </a>
+            <a href="javascript:void(0)" onclick="navigateToHotNews()" class="feature-item">
+                <img src="images/热门资讯.png" alt="">
+                <span>热门资讯</span>
+            </a>
+        </div>
+
+        <!-- 主要内容区域 -->
+        <main>
+            <!-- 轮播图 -->
+            <div class="slider">
+                <div class="slider-container">
+                    <div class="slide">
+                        <img src="images/德约澳网八强战.jpg">
+                        <div class="slider-text">
+                            <h2>3-1逆转阿尔卡拉斯！德约科维奇晋级澳网四强</h2>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/NBA全明星.jpg">
+                        <div class="slider-text">
+                            <h2>投票正在进行中！NBA全明星赛精彩回顾…</h2>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <img src="images/澳网火热进行中.jpg">
+                        <div class="slider-text">
+                            <h2>男女单四强悉数出炉，澳网公开赛最新赛况…</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+
+            <!-- 场馆网格 -->
+            <div class="stadium-grid">
+                <div class="stadium-card">
+                    <img src="images/西安国际足球中心.png" alt="西安国际足球中心">
+                    <div class="stadium-info">
+                        <div class="stadium-title">
+                            <span class="stadium-name">西安国际足球中心</span>
+                            <span class="stadium-location">西咸新区</span>
+                        </div>
+                        <div class="stadium-tags">
+                            <span class="tag">热门比赛</span>
+                            <img src="images/喜欢_like.png" class="favorite-btn" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="stadium-card">
+                    <img src="images/渭南体育场.png">
+                    <div class="stadium-info">
+                        <span class="stadium-name">渭南体育场</span>
+                        <span class="stadium-location">渭南市</span>
+                    </div>
+                    <div class="stadium-tags">
+                        <span class="tag">大家在搜</span>
+                        <img src="images/喜欢_like.png" class="favorite-btn" alt="">
+                    </div>
+                </div>
+                <div class="stadium-card">
+                    <img src="images/陕西省体育场.jpg" alt="陕西省体育场">
+                    <div class="stadium-info">
+                        <div class="stadium-title">
+                            <span class="stadium-name">陕西省体育场</span>
+                            <span class="stadium-location">雁塔区</span>
+                        </div>
+                        <div class="stadium-tags">
+                            <span class="tag">编辑推荐</span>
+                            <img src="images/喜欢_like.png" class="favorite-btn" alt="收藏">
+                        </div>
+                    </div>
+                </div>
+                <div class="stadium-card last">
+                    <img src="images/榆林体育场.png">
+                </div>
+            </div>
+        </main>
+
+        <!-- 底部导航 -->
+        <footer>
+            <div class="bottom-nav">
+                <a href="index.html" class="active">
+                    <img src="images/篮球架_basketball-stand.png" class="nav-icon" alt="球场">
+                    <span class="nav-text">球场</span>
+                </a>
+                <a href="data.html">
+                    <img src="images/比分牌_scoreboard.png" class="nav-icon" alt="数据">
+                    <span class="nav-text">数据</span>
+                </a>
+                <a href="hot.html">
+                    <img src="images/毛巾_towel.png" class="nav-icon" alt="热门">
+                    <span class="nav-text">热门</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page loaded');
+            if (typeof AndroidInterface !== 'undefined') {
+                console.log('AndroidInterface is available');
+            } else {
+                console.log('AndroidInterface is NOT available');
+            }
+
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const totalSlides = slides.length;
+            const container = document.querySelector('.slider-container');
+
+            function showSlide(index) {
+                if (index >= totalSlides) {
+                    currentSlide = 0;
+                } else if (index < 0) {
+                    currentSlide = totalSlides - 1;
+                } else {
+                    currentSlide = index;
+                }
+
+                // 更新轮播图位置
+                container.style.transform = `translateX(-${currentSlide * 33.333}%)`;
+
+                // 更新指示点状态
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === currentSlide);
+                });
+            }
+
+            // 自动轮播
+            let autoSlide = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 3000);
+
+            // 点击指示点切换轮播图
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(autoSlide); // 清除自动轮播
+                    showSlide(index);
+                    // 重新开始自动轮播
+                    autoSlide = setInterval(() => {
+                        showSlide(currentSlide + 1);
+                    }, 3000);
+                });
+            });
+
+            // 触摸事件处理
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            container.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                clearInterval(autoSlide); // 触摸时停止自动轮播
+            });
+
+            container.addEventListener('touchmove', (e) => {
+                touchEndX = e.touches[0].clientX;
+            });
+
+            container.addEventListener('touchend', () => {
+                const difference = touchStartX - touchEndX;
+                if (Math.abs(difference) > 50) { // 最小滑动距离
+                    if (difference > 0) {
+                        // 向左滑动，显示下一张
+                        showSlide(currentSlide + 1);
+                    } else {
+                        // 向右滑动，显示上一张
+                        showSlide(currentSlide - 1);
+                    }
+                }
+                // 恢复自动轮播
+                autoSlide = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, 3000);
+            });
+
+            document.fonts.ready.then(function() {
+                console.log('Fonts loaded');
+                document.fonts.forEach(function(font) {
+                    console.log(font.family, font.status);
+                });
+            });
+
+            window.onload = function() {
+                const style = document.createElement('style');
+                style.textContent = `
+                    .font-test {
+                        font-family: 'NotoSansSC';
+                        visibility: hidden;
+                        position: absolute;
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                const testDiv = document.createElement('div');
+                testDiv.className = 'font-test';
+                testDiv.textContent = '测试字体';
+                document.body.appendChild(testDiv);
+                
+                console.log('Font family:', getComputedStyle(testDiv).fontFamily);
+
+                // 检查字体是否加载
+                if ('fonts' in document) {
+                    document.fonts.ready.then(function() {
+                        const testText = document.createElement('div');
+                        testText.style.fontFamily = 'NotoSansSC';
+                        testText.style.position = 'absolute';
+                        testText.style.left = '-9999px';
+                        testText.textContent = '测试文字';
+                        document.body.appendChild(testText);
+                        
+                        const fontFamily = window.getComputedStyle(testText).fontFamily;
+                        console.log('Current font:', fontFamily);
+                    });
+                }
+            }
+
+            document.fonts.ready.then(function() {
+                document.documentElement.classList.add('fonts-loaded');
+                console.log('All fonts successfully loaded');
+                
+                // 检查实际使用的字体
+                const testElement = document.createElement('span');
+                testElement.textContent = '测试文字';
+                testElement.style.fontFamily = 'CustomFontVariable';
+                document.body.appendChild(testElement);
+                
+                const computedFont = window.getComputedStyle(testElement).fontFamily;
+                console.log('Actual font being used:', computedFont);
+                
+                testElement.remove();
+            });
+        });
+
+        function navigateToHotStadiums() {
+            if (typeof AndroidInterface !== 'undefined') {
+                try {
+                    window.location.href = 'hot-stadiums.html';
+                } catch (e) {
+                    console.error('Error navigating to hot stadiums:', e);
+                }
+            }
+        }
+
+        function navigateToHotNews() {
+            if (typeof AndroidInterface !== 'undefined') {
+                try {
+                    window.location.href = 'hot-news.html';
+                } catch (e) {
+                    console.error('Error navigating to hot news:', e);
+                }
+            }
+        }
+
+        function navigateToHotMatches() {
+            if (typeof AndroidInterface !== 'undefined') {
+                try {
+                    window.location.href = 'hot-matches.html';
+                } catch (e) {
+                    console.error('Error navigating to hot matches:', e);
+                }
+            }
+        }
+    </script>
+</body>
+</html> 

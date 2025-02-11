@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>数据</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- 改用本地 ECharts -->
+    <script src="js/echarts.min.js"></script>
+    <script src="js/data-loader.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- 标题区域 -->
+        <div class="data-header">
+            <h1>好玩的数据</h1>
+            <h2>有趣的灵魂</h2>
+        </div>
+
+        <!-- 卡片滑动区域 -->
+        <div class="cards-container">
+            <div class="cards-wrapper">
+                <!-- 詹姆斯数据卡片 -->
+                <div id="lebron-card" class="data-card">
+                    <div class="card-inner">
+                        <!-- 正面：玫瑰图 -->
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="header-content">
+                                    <img src="images/詹姆斯.png" class="card-icon" alt="">
+                                    <h3>詹姆斯对各队单场最高分</h3>
+                                </div>
+                                <span class="flip-hint">点击翻转</span>
+                            </div>
+                            <div id="lebronChart" class="chart-container"></div>
+                        </div>
+                        <!-- 背面：数据表格 -->
+                        <div class="card-back">
+                            <div class="card-header">
+                                <div class="header-content center">
+                                    <img src="images/詹姆斯.png" class="card-icon" alt="">
+                                    <h3>詹姆斯对各队单场最高分</h3>
+                                </div>
+                                <button class="flip-btn" title="返回">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 4L4 9L9 14M4 9H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="data-table">
+                                <div class="table-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-value">61</span>
+                                        <span class="stat-label">最高得分</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value">5</span>
+                                        <span class="stat-label">50+得分次数</span>
+                                    </div>
+                                </div>
+                                <table id="lebronTable">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">排名</th>
+                                            <th class="text-center">对阵球队</th>
+                                            <th class="text-center">得分</th>
+                                            <th class="text-center">日期</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- 数据将通过 JavaScript 动态填充 -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- C罗数据卡片 -->
+                <div class="data-card">
+                    <div class="card-inner">
+                        <!-- 正面：玫瑰图 -->
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="header-content">
+                                    <img src="images/C罗.png" class="card-icon" alt="">
+                                    <h3>C罗生涯进球纪录</h3>
+                                </div>
+                                <span class="flip-hint">点击翻转</span>
+                            </div>
+                            <div id="ronaldoChart"></div>
+                        </div>
+                        <!-- 背面：数据表格 -->
+                        <div class="card-back">
+                            <div class="card-header">
+                                <div class="header-content center">
+                                    <img src="images/C罗.png" class="card-icon" alt="">
+                                    <h3>C罗生涯进球纪录</h3>
+                                </div>
+                                <button class="flip-btn" title="返回图表">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 4L4 9L9 14M4 9H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="data-table">
+                                <div class="table-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-value">850</span>
+                                        <span class="stat-label">职业生涯进球</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value">5</span>
+                                        <span class="stat-label">单场最高进球</span>
+                                    </div>
+                                </div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">效力球队</th>
+                                            <th class="text-center">进球数</th>
+                                            <th class="text-center">赛季</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">皇家马德里</td>
+                                            <td class="text-center score-cell">450</td>
+                                            <td class="text-center">2009-2018</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">曼联</td>
+                                            <td class="text-center score-cell">145</td>
+                                            <td class="text-center">2003-2009</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">葡萄牙</td>
+                                            <td class="text-center score-cell">123</td>
+                                            <td class="text-center">2003-2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">尤文图斯</td>
+                                            <td class="text-center score-cell">101</td>
+                                            <td class="text-center">2018-2021</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">利雅得胜利</td>
+                                            <td class="text-center score-cell">44</td>
+                                            <td class="text-center">2023-2024</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">里斯本</td>
+                                            <td class="text-center score-cell">32</td>
+                                            <td class="text-center">2002-2003</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CBA数据卡片 -->
+                <div class="data-card">
+                    <div class="card-inner">
+                        <!-- 正面：条形图 -->
+                        <div class="card-front">
+                            <div class="card-header">
+                                <div class="header-content">
+                                    <img src="images/姚明.png" class="card-icon" alt="">
+                                    <h3>CBA联赛数据榜单</h3>
+                                </div>
+                                <span class="flip-hint">点击翻转</span>
+                            </div>
+                            <div id="cbaChart"></div>
+                        </div>
+                        <!-- 背面：数据表格 -->
+                        <div class="card-back">
+                            <div class="card-header">
+                                <div class="header-content center">
+                                    <img src="images/姚明.png" class="card-icon" alt="">
+                                    <h3>CBA联赛数据榜单</h3>
+                                </div>
+                                <button class="flip-btn" title="返回图表">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                        <path d="M9 4L4 9L9 14M4 9H20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="data-table">
+                                <div class="table-stats">
+                                    <div class="stat-item">
+                                        <span class="stat-value">20</span>
+                                        <span class="stat-label">参赛队伍</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <span class="stat-value">38</span>
+                                        <span class="stat-label">常规赛轮次</span>
+                                    </div>
+                                </div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">排名</th>
+                                            <th class="text-center">球员</th>
+                                            <th class="text-center">总得分</th>
+                                            <th class="text-center">场均</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-center">1</td>
+                                            <td class="text-center">哈德森</td>
+                                            <td class="text-center score-cell">13076</td>
+                                            <td class="text-center">26.5</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">2</td>
+                                            <td class="text-center">易建联</td>
+                                            <td class="text-center score-cell">12781</td>
+                                            <td class="text-center">24.8</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">3</td>
+                                            <td class="text-center">琼斯</td>
+                                            <td class="text-center score-cell">11887</td>
+                                            <td class="text-center">25.2</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">4</td>
+                                            <td class="text-center">朱芳雨</td>
+                                            <td class="text-center score-cell">11165</td>
+                                            <td class="text-center">22.4</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-center">5</td>
+                                            <td class="text-center">刘炜</td>
+                                            <td class="text-center score-cell">10147</td>
+                                            <td class="text-center">20.1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 指示器放在这里 -->
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <!-- 底部导航 -->
+        <footer>
+            <div class="bottom-nav">
+                <a href="javascript:void(0)" onclick="navigateTo('index.html')" class="nav-item">
+                    <img src="images/篮球架_basketball-stand.png" class="nav-icon">
+                    <span class="nav-text">球场</span>
+                </a>
+                <a href="javascript:void(0)" onclick="navigateTo('data.html')" class="nav-item active">
+                    <img src="images/比分牌_scoreboard.png" class="nav-icon">
+                    <span class="nav-text">数据</span>
+                </a>
+                <a href="javascript:void(0)" onclick="navigateTo('hot.html')" class="nav-item">
+                    <img src="images/毛巾_towel.png" class="nav-icon">
+                    <span class="nav-text">热门</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 检查 ECharts 是否正确加载
+        console.log('ECharts loaded:', typeof echarts !== 'undefined');
+        
+        // 检查容器是否存在
+        const container = document.getElementById('lebronChart');
+        console.log('Chart container:', container);
+        
+        // 检查容器尺寸
+        if (container) {
+            console.log('Container size:', {
+                width: container.clientWidth,
+                height: container.clientHeight,
+                offsetWidth: container.offsetWidth,
+                offsetHeight: container.offsetHeight
+            });
+        }
+
+        // 初始化卡片翻转
+        const cards = document.querySelectorAll('.data-card');
+        cards.forEach(card => {
+            const cardFront = card.querySelector('.card-front');
+            const cardBack = card.querySelector('.card-back');
+
+            // 点击正面翻转到背面
+            cardFront.addEventListener('click', (e) => {
+                if (!e.target.closest('.flip-hint')) {
+                    card.classList.add('flipped');
+                }
+            });
+
+            // 点击背面任何区域返回正面
+            cardBack.addEventListener('click', (e) => {
+                e.stopPropagation();
+                card.classList.remove('flipped');
+            });
+        });
+
+        // 初始化图表
+        if (typeof echarts !== 'undefined') {
+            // 确保容器准备好后再初始化图表
+            setTimeout(() => {
+                DataLoader.initializeCharts();
+            }, 100);
+        }
+    });
+
+    // 导航函数
+    function navigateTo(page) {
+        window.location.href = page;
+    }
+
+    // 监听评分更新
+    function listenToRatingUpdates(stadiumId) {
+        try {
+            AndroidInterface.observeRatings(stadiumId, (newRating) => {
+                // 更新UI显示
+                updateRatingDisplay(stadiumId, newRating);
+            });
+        } catch (e) {
+            console.error('Error setting up rating listener:', e);
+        }
+    }
+
+    // 更新评分显示
+    function updateRatingDisplay(stadiumId, rating) {
+        const card = document.querySelector(`[data-id="${stadiumId}"]`);
+        if (card) {
+            const ratingScore = card.querySelector('.rating-score');
+            if (ratingScore) {
+                ratingScore.textContent = `${rating.toFixed(1)}分`;
+            }
+            const stars = card.querySelector('.star-display');
+            if (stars) {
+                stars.innerHTML = generateStars(rating);
+            }
+        }
+    }
+
+    // 提交新评分
+    function submitRating(stadiumId, rating) {
+        try {
+            AndroidInterface.updateRating(stadiumId, rating);
+        } catch (e) {
+            console.error('Error submitting rating:', e);
+        }
+    }
+    </script>
+</body>
+</html>
